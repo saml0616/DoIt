@@ -33,7 +33,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddBet"></activity>
+        <activity android:name=".AddBet" />
+        <activity
+            android:name=".SignupActivity"
+            android:label="@string/title_activity_signup"></activity>
     </application>
 
 </manifest>

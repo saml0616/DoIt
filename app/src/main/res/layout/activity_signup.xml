@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="co.example.samantha.doit.LoginActivity">
+    tools:context="co.example.samantha.doit.SignupActivity">
 
     <!-- Login progress -->
     <ProgressBar
@@ -22,7 +22,7 @@
     <ScrollView
         android:id="@+id/login_form"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/email_login_form"
@@ -64,20 +64,14 @@
             </android.support.design.widget.TextInputLayout>
 
             <Button
-                android:id="@+id/log_in_button"
+                android:id="@+id/email_sign_in_button"
                 style="?android:textAppearanceSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/logIn"
+                android:text="@string/action_sign_in"
                 android:textStyle="bold" />
-
 
         </LinearLayout>
     </ScrollView>
-    <Button
-        android:id="@+id/sign_up_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sign Up" />
 </LinearLayout>
