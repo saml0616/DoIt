@@ -109,7 +109,12 @@
     </string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_side">Side</string>
-
+    <string name="add_bet_name">Bet Name</string>
+    <string name="add_bet_description">Bet Summary</string>
+    <string name="add_bet_due_date">Due Date</string>
+    <string name="add_bet_add_button">Add</string>
+    <string name="add_bet_cancel_button">Cancel</string>
+    <string name="add_bet_wager">Wager</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="title_activity_main">MainActivity</string>

@@ -16,9 +16,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
+    static final int ADD_WAGER = 1337;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -78,8 +78,8 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Intent inte = new Intent(MainActivity.this, AddBet.class);
-            startActivity(inte);
+            Intent inte = new Intent(this, AddBet.class);
+            startActivityForResult(inte,ADD_WAGER);
             return true;
         }
 
@@ -105,5 +105,13 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent betinfo){
+        if(requestCode == ADD_WAGER){
+            if(resultCode == RESULT_OK){
+                
+            }
+        }
     }
 }
