@@ -22,7 +22,7 @@
         android:layout_height="40dp" />
 
     <TextView
-        android:id="@+id/wager"
+        android:id="@+id/wagerinput"
         android:layout_width="52dp"
         android:layout_height="40dp" />
 

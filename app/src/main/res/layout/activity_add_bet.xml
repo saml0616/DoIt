@@ -93,7 +93,7 @@
         app:layout_constraintTop_toBottomOf="@+id/endDate" />
 
     <TextView
-        android:id="@+id/wagerinput"
+        android:id="@+id/wager"
         android:layout_width="wrap_content"
         android:layout_height="15dp"
         android:layout_marginStart="24dp"
@@ -104,13 +104,33 @@
 
     <EditText
         android:id="@+id/wagerinput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="131dp"
+        android:layout_height="50dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="356dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wagerinput" />
+        app:layout_constraintTop_toBottomOf="@+id/wager" />
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="184dp"
+        android:text="TextView"
+        app:layout_constraintStart_toEndOf="@+id/wager"
+        tools:layout_editor_absoluteY="325dp" />
+
+    <EditText
+        android:id="@+id/locationInput"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toEndOf="@+id/wagerinput"
+        app:layout_constraintTop_toBottomOf="@+id/location" />
 
 </android.support.constraint.ConstraintLayout>

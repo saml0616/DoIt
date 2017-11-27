@@ -34,7 +34,7 @@ public class FeedCursorAdapter extends CursorAdapter{
         TextView description = view.findViewById(R.id.description);
         TextView startDate = view.findViewById(R.id.startDate);
         TextView endDate = view.findViewById(R.id.endDate);
-        TextView wager = view.findViewById(R.id.wager);
+        TextView wager = view.findViewById(R.id.wagerinput);
         TextView betMateID = view.findViewById(R.id.betMateID);
         Button delete = view.findViewById(R.id.delete);
         final int id = cursor.getInt(cursor.getColumnIndexOrThrow("_id"));

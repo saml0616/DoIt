@@ -37,6 +37,7 @@ public class AddBet extends AppCompatActivity {
     public void saveBet(View view){
 
         EditText betName = (EditText) findViewById(R.id.betname);
+        EditText location = (EditText) findViewById(R.id.locationInput);
         EditText descripfield = (EditText) findViewById(R.id.descripinput);
         EditText endDate = (EditText) findViewById(R.id.dueDateInput);
         EditText wager = (EditText) findViewById(R.id.wagerinput);
@@ -46,6 +47,7 @@ public class AddBet extends AppCompatActivity {
         returnIntent.putExtra("descrip",descripfield.getText().toString());
         returnIntent.putExtra("endDate",endDate.getText().toString());
         returnIntent.putExtra("wager",wager.getText().toString());
+        returnIntent.putExtra("location",location.getText().toString());
         setResult(Activity.RESULT_OK,returnIntent);
         finish();
 
