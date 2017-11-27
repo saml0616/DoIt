@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onActivityResult(int requestCode, int resultCode, Intent betinfo){
         if(requestCode == ADD_WAGER){
             if(resultCode == RESULT_OK){
-                handler.addEntry(new DataItem(int betID, int ownerID, int betMateID, betinfo.getStringExtra("descrip"), betinfo.getStringExtra("endDate"), "Home", int wager));
+                handler.addEntry(new DataItem(1, 2, 3, betinfo.getStringExtra("descrip"), betinfo.getStringExtra("endDate"), "Home",Integer.parseInt(betinfo.getStringExtra("wager"))));
             }
         }
     }

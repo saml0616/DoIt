@@ -12,11 +12,11 @@ public class DataItem {
     private int betMateID;
     private String description;
     private Date createDate;
-    private Date endDate;
+    private String endDate;
     private String location;
     private int wager;
 
-    public DataItem(int betID, int ownerID, int betMateID, String description, Date endDate, String location, int wager) {
+    public DataItem(int betID, int ownerID, int betMateID, String description, String endDate, String location, int wager) {
         this.betID = betID;
         this.ownerID = ownerID;
         this.betMateID = betMateID;
@@ -47,7 +47,7 @@ public class DataItem {
         return createDate;
     }
 
-    public Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
