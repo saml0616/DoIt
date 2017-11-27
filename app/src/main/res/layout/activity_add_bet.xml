@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.asusrtrix.myapplication.AddActivity">
 
-<<<<<<< HEAD
     <TextView
         android:id="@+id/Bet"
         android:layout_width="wrap_content"
@@ -115,81 +114,3 @@
         app:layout_constraintTop_toBottomOf="@+id/wagerinput" />
 
 </android.support.constraint.ConstraintLayout>
-=======
-    <EditText
-        android:id="@+id/noteInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textMultiLine"
-        tools:layout_editor_absoluteX="114dp"
-        tools:layout_editor_absoluteY="171dp"
-        android:layout_marginTop="60dp"
-        android:layout_below="@+id/titleInput"
-        android:layout_toRightOf="@+id/notes"
-        android:layout_toEndOf="@+id/notes" />
-
-    <EditText
-        android:id="@+id/titleInput"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textShortMessage"
-        tools:layout_editor_absoluteX="114dp"
-        tools:layout_editor_absoluteY="67dp"
-        android:layout_alignBaseline="@+id/title"
-        android:layout_alignBottom="@+id/title"
-        android:layout_toRightOf="@+id/title"
-        android:layout_toEndOf="@+id/title" />
-
-    <TextView
-        android:id="@+id/notes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Notes:"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="171dp"
-        android:layout_marginLeft="35dp"
-        android:layout_marginStart="35dp"
-        android:layout_above="@+id/cancel_btn"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Title: "
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="67dp"
-        android:layout_marginTop="53dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/notes"
-        android:layout_alignStart="@+id/notes" />
-
-    <Button
-        android:text="Save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/save_btn"
-        android:layout_alignBaseline="@+id/cancel_btn"
-        android:layout_alignBottom="@+id/cancel_btn"
-        android:layout_alignRight="@+id/titleInput"
-        android:layout_alignEnd="@+id/titleInput"
-        android:layout_marginRight="17dp"
-        android:layout_marginEnd="17dp" />
-
-    <Button
-        android:text="Cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/cancel_btn"
-        android:layout_marginTop="82dp"
-        android:layout_below="@+id/noteInput"
-        android:layout_toLeftOf="@+id/titleInput"
-        android:layout_toStartOf="@+id/titleInput" />
-
-</RelativeLayout>
->>>>>>> 2be0fafa8f30937774d4477c8fb4cf6f6c364634

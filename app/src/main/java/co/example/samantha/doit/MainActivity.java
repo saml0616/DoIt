@@ -18,15 +18,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-<<<<<<< HEAD
     static final int ADD_WAGER = 1337;
-=======
     FeedCursorAdapter adapter;
     DatabaseHelper handler;
 
->>>>>>> 2be0fafa8f30937774d4477c8fb4cf6f6c364634
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -127,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onActivityResult(int requestCode, int resultCode, Intent betinfo){
         if(requestCode == ADD_WAGER){
             if(resultCode == RESULT_OK){
-                
+                handler.addEntry(new DataItem(int betID, int ownerID, int betMateID, betinfo.getStringExtra("descrip"), betinfo.getStringExtra("endDate"), "Home", int wager));
             }
         }
     }
