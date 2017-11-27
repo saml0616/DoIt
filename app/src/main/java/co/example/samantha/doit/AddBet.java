@@ -1,10 +1,12 @@
 package co.example.samantha.doit;
 
+import android.app.Activity;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 public class AddBet extends AppCompatActivity {
 
@@ -21,5 +23,16 @@ public class AddBet extends AppCompatActivity {
         if (item.getItemId()==android.R.id.home)
             finish();
         return super.onOptionsItemSelected(item);
+    }
+
+    public void cancel (View view){
+        setResult(Activity.RESULT_CANCELED,null);
+        finish();
+    }
+
+    public void save(View view){
+
+        setResult(Activity.RESULT_OK, returnIntent);
+        finish();
     }
 }
