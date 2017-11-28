@@ -35,46 +35,40 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db) {
+    public void onCreate(SQLiteDatabase datab) {
         String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " ("
                 + KEY_BET_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_OWNER_ID + " TEXT, "
                 + KEY_BETMATE_ID + " TEXT, " + KEY_DESCRIPTION + " TEXT, "+ KEY_CREATE_DATE + " TEXT, "
                 + KEY_END_DATE + " TEXT, " + KEY_LOCATION + " TEXT, " + KEY_WAGER + " TEXT)";
-        db.execSQL(CREATE_TABLE);
+        datab.execSQL(CREATE_TABLE);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    public void onUpgrade(SQLiteDatabase datab, int oldVersion, int newVersion) {
         // Drop older table if existed
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        datab.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
 
         // Create tables again
-        onCreate(db);
+        onCreate(datab);
     }
 
     public void addEntry(DataItem entry) {
-        SQLiteDatabase db = this.getWritableDatabase();
-
         ContentValues values = new ContentValues();
-        values.put(KEY_BET_ID, entry.getBetID());
         values.put(KEY_OWNER_ID, entry.getOwnerID());
         values.put(KEY_BETMATE_ID, entry.getBetMateID());
         values.put(KEY_DESCRIPTION, entry.getDescription());
         values.put(KEY_CREATE_DATE, entry.getCreateDate().toString());
-        values.put(KEY_END_DATE, entry.getEndDate().toString());
+        values.put(KEY_END_DATE, entry.getEndDate());
         values.put(KEY_LOCATION, entry.getLocation());
         values.put(KEY_WAGER, entry.getWager());
 
         // Inserting Row
         db.insert(TABLE_NAME, null, values);
-        db.close(); // Closing database connection
     }
 
     public void deleteEntry(int id) {
-        SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_NAME, KEY_BET_ID + " = ?",
                 new String[] { String.valueOf(id) });
-        db.close();
     }
 
     public Cursor getCursor(){

@@ -28,12 +28,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         Context context = MainActivity.this;
         this.handler = new DatabaseHelper(context);
         this.adapter = new FeedCursorAdapter(context, handler.getCursor());
-        ListView listView = (ListView) findViewById(R.id.nav_first_layout);
+        handler.addEntry(new DataItem(1, 2, 3, "30 Jumps", "Tomorrow", "My Room",30));
+
+        ListView listView = (ListView) findViewById(R.id.listview);
         listView.setAdapter(adapter);
-        setContentView(R.layout.first_layout);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 //        toolbar.findViewById(R.id.action_settings).setOnClickListener(new View.OnClickListener(){
@@ -64,12 +66,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void setView() {
-        handler = new DatabaseHelper(this);
-        SQLiteDatabase db = handler.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT  * FROM Entry", null);
-        ListView listView = (ListView) findViewById(R.id.nav_first_layout);
-        adapter = new FeedCursorAdapter(this, cursor);
-        listView.setAdapter(adapter);
+        adapter.swapCursor(handler.getCursor());
     }
 
     @Override
@@ -131,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(requestCode == ADD_WAGER){
             if(resultCode == RESULT_OK){
                 handler.addEntry(new DataItem(1, 2, 3, betinfo.getStringExtra("descrip"), betinfo.getStringExtra("endDate"), betinfo.getStringExtra("location"),Integer.parseInt(betinfo.getStringExtra("wager"))));
-                setView();
+                adapter.swapCursor(handler.getCursor());
             }
         }
     }

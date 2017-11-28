@@ -25,7 +25,7 @@ public class FeedCursorAdapter extends CursorAdapter{
 
     @Override
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
-        return LayoutInflater.from(context).inflate(R.layout.first_layout, parent, false);
+        return LayoutInflater.from(context).inflate(R.layout.entry, parent, false);
 
     }
 
@@ -41,7 +41,7 @@ public class FeedCursorAdapter extends CursorAdapter{
 
 
         String descriptionString = cursor.getString(cursor.getColumnIndexOrThrow("description"));
-        String startDateString = cursor.getString(cursor.getColumnIndexOrThrow("startDate"));
+        String startDateString = cursor.getString(cursor.getColumnIndexOrThrow("createDate"));
         String endDateString = cursor.getString(cursor.getColumnIndexOrThrow("endDate"));
         String wagerString = cursor.getString(cursor.getColumnIndexOrThrow("wager"));
         String betMateIDString = cursor.getString(cursor.getColumnIndexOrThrow("betMateID"));
