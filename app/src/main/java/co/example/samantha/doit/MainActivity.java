@@ -1,6 +1,7 @@
 package co.example.samantha.doit;
 
 import android.app.FragmentManager;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -23,14 +24,18 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     static final int ADD_WAGER = 1337;
-    FeedCursorAdapter adapter;
-    DatabaseHelper handler;
+    private FeedCursorAdapter adapter;
+    private DatabaseHelper handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setView();
-        setContentView(R.layout.activity_main);
+        Context context = MainActivity.this;
+        this.handler = new DatabaseHelper(context);
+        this.adapter = new FeedCursorAdapter(context, handler.getCursor());
+        ListView listView = (ListView) findViewById(R.id.nav_first_layout);
+        listView.setAdapter(adapter);
+        setContentView(R.layout.first_layout);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 //        toolbar.findViewById(R.id.action_settings).setOnClickListener(new View.OnClickListener(){
