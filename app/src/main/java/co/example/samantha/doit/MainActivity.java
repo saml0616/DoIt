@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setView();
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -127,7 +128,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(requestCode == ADD_WAGER){
             if(resultCode == RESULT_OK){
                 handler.addEntry(new DataItem(1, 2, 3, betinfo.getStringExtra("descrip"), betinfo.getStringExtra("endDate"), betinfo.getStringExtra("location"),Integer.parseInt(betinfo.getStringExtra("wager"))));
-//                adapter.swapCursor();
+                setView();
             }
         }
     }

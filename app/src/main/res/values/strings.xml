@@ -115,6 +115,7 @@
     <string name="add_bet_add_button">Add</string>
     <string name="add_bet_cancel_button">Cancel</string>
     <string name="add_bet_wager">Wager</string>
+    <string name="add_bet_location">Location</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="title_activity_main">MainActivity</string>
