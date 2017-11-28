@@ -68,16 +68,17 @@ public class LoginHelper extends SQLiteOpenHelper {
         String user;
         String pass = "err";
         Cursor c = database.rawQuery(query, null);
-        c.moveToFirst();
-        do {
-            user = c.getString(0);
-            pass = c.getString(1);
-
-            if (user.equals(username)) {
+        if (c.moveToFirst()) {
+            do {
+                user = c.getString(0);
                 pass = c.getString(1);
-                break;
-            }
-        } while (c.moveToNext());
+
+                if (user.equals(username)) {
+                    pass = c.getString(1);
+                    break;
+                }
+            } while (c.moveToNext());
+        }
         return pass;
     }
 
@@ -85,12 +86,13 @@ public class LoginHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = getReadableDatabase();
         String query = "SELECT " + KEY_USERNAME + " FROM " + TABLE_NAME;
         Cursor c = database.rawQuery(query, null);
-        c.moveToFirst();
-        do {
-            if (c.getString(0).equals(username)) {
-                return false;
-            }
-        } while (c.moveToNext());
+        if (c.moveToFirst()) {
+            do {
+                if (c.getString(0).equals(username)) {
+                    return false;
+                }
+            } while (c.moveToNext());
+        }
         return true;
     }
 
@@ -98,12 +100,13 @@ public class LoginHelper extends SQLiteOpenHelper {
         SQLiteDatabase database = getReadableDatabase();
         String query = "SELECT " + KEY_EMAIL + " FROM " + TABLE_NAME;
         Cursor c = database.rawQuery(query, null);
-        c.moveToFirst();
-        do {
-            if (c.getString(0).equals(email)) {
-                return false;
-            }
-        } while (c.moveToNext());
+        if (c.moveToFirst()) {
+            do {
+                if (c.getString(0).equals(email)) {
+                    return false;
+                }
+            } while (c.moveToNext());
+        }
         return true;
     }
 
