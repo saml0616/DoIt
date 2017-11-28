@@ -3,6 +3,7 @@ package co.example.samantha.doit;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
@@ -100,10 +101,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         signUpButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                mPasswordView.setText("*****");
-                mEmailView.setText("@");
-                attemptLogin();
-                Toast.makeText(getApplicationContext(), "I know this isnt the right way to do it... idk how... please help", Toast.LENGTH_LONG).show();
+                Intent signupIntent = new Intent(LoginActivity.this, SignupActivity.class);
+                startActivity(signupIntent);
             }
         });
 
@@ -205,6 +204,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
+            Button signupButton =  (Button) findViewById(R.id.sign_up_button);
+            signupButton.setVisibility(View.GONE);
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
         }

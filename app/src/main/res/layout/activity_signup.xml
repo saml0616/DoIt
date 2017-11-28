@@ -32,6 +32,21 @@
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <AutoCompleteTextView
+                    android:id="@+id/displayName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_display_name"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <AutoCompleteTextView
@@ -54,7 +69,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_password"
-                    android:imeActionId="@+id/login"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
                     android:inputType="textPassword"
