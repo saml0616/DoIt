@@ -19,8 +19,8 @@
 
     <EditText
         android:id="@+id/betname"
-        android:layout_width="151dp"
-        android:layout_height="46dp"
+        android:layout_width="146dp"
+        android:layout_height="50dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="12dp"
         android:ems="10"
@@ -40,8 +40,8 @@
 
     <EditText
         android:id="@+id/descripinput"
-        android:layout_width="181dp"
-        android:layout_height="78dp"
+        android:layout_width="177dp"
+        android:layout_height="129dp"
         android:layout_marginStart="196dp"
         android:layout_marginTop="12dp"
         android:ems="10"
@@ -83,8 +83,8 @@
 
     <EditText
         android:id="@+id/dueDateInput"
-        android:layout_width="178dp"
-        android:layout_height="wrap_content"
+        android:layout_width="149dp"
+        android:layout_height="47dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:ems="10"
@@ -105,8 +105,8 @@
 
     <EditText
         android:id="@+id/wagerinput"
-        android:layout_width="131dp"
-        android:layout_height="50dp"
+        android:layout_width="148dp"
+        android:layout_height="52dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:ems="10"
@@ -118,18 +118,16 @@
         android:id="@+id/location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="196dp"
-        android:layout_marginTop="8dp"
         android:text="@string/add_bet_location"
-        app:layout_constraintStart_toEndOf="@+id/wager"
-        app:layout_constraintTop_toBottomOf="@+id/descripinput" />
+        tools:layout_editor_absoluteX="256dp"
+        tools:layout_editor_absoluteY="198dp" />
 
     <EditText
         android:id="@+id/locationInput"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
