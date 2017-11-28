@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
@@ -7,35 +9,94 @@
 
     <TextView
         android:id="@+id/description"
-        android:layout_width="56dp"
-        android:layout_height="40dp"
-        android:layout_weight="0.15" />
+        android:layout_width="140dp"
+        android:layout_height="60dp"
+        android:layout_alignTop="@+id/delete"
+        android:layout_toLeftOf="@+id/delete"
+        android:layout_toStartOf="@+id/delete"
+        android:layout_weight="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/startDate" />
 
     <TextView
         android:id="@+id/startDate"
-        android:layout_width="49dp"
-        android:layout_height="40dp" />
+        android:layout_width="208dp"
+        android:layout_height="44dp"
+        android:layout_alignBottom="@+id/endDate"
+        android:layout_toLeftOf="@+id/textView5"
+        android:layout_toStartOf="@+id/textView5"
+        app:layout_constraintEnd_toStartOf="@+id/delete"
+        app:layout_constraintHorizontal_bias="0.288"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/endDate"
-        android:layout_width="56dp"
-        android:layout_height="40dp" />
+        android:layout_width="92dp"
+        android:layout_height="46dp"
+        android:layout_alignEnd="@+id/delete"
+        android:layout_alignRight="@+id/delete"
+        android:layout_below="@+id/delete"
+        app:layout_constraintStart_toEndOf="@+id/description"
+        tools:layout_editor_absoluteY="77dp" />
 
     <TextView
         android:id="@+id/wagerinput"
-        android:layout_width="52dp"
-        android:layout_height="40dp" />
-
-    <TextView
-        android:id="@+id/betMateID"
-        android:layout_width="54dp"
-        android:layout_height="40dp" />
+        android:layout_width="68dp"
+        android:layout_height="58dp"
+        android:layout_alignBottom="@+id/delete"
+        android:layout_toEndOf="@+id/textView4"
+        android:layout_toRightOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/endDate"
+        app:layout_constraintTop_toBottomOf="@+id/delete" />
 
     <Button
         android:id="@+id/delete"
-        android:layout_width="69dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="61dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
         android:layout_weight="0.72"
-        android:text="Complete" />
-</LinearLayout>
+        android:text="Complete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/startDate"
+        android:text="__________________________________________________"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/endDate" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="10dp"
+        android:layout_height="58dp"
+        android:layout_alignBaseline="@+id/wagerinput"
+        android:layout_alignBottom="@+id/wagerinput"
+        android:layout_alignLeft="@+id/startDate"
+        android:layout_alignStart="@+id/startDate"
+        android:layout_marginLeft="11dp"
+        android:layout_marginStart="11dp"
+        android:text="$" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/startDate"
+        android:layout_toLeftOf="@+id/delete"
+        android:layout_toStartOf="@+id/delete"
+        android:text="Due Date" />
+</RelativeLayout>
