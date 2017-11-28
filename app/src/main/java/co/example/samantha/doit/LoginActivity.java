@@ -60,6 +60,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private LoginHelper loginDB = new LoginHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

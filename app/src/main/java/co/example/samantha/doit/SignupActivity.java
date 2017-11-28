@@ -42,9 +42,6 @@ import static android.Manifest.permission.READ_CONTACTS;
  */
 public class SignupActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
-    //creates login database
-    private LoginHelper loginDB = new LoginHelper(this);
-
     /**
      * Id to identity READ_CONTACTS permission request.
      */
@@ -68,9 +65,12 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
     private View mProgressView;
     private View mLoginFormView;
     private AutoCompleteTextView mDisplayNameView;
+    private LoginHelper loginDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        loginDB = LoginHelper.getInstance(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
         // Set up the login form.
@@ -94,7 +94,6 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
-            @Override
             public void onClick(View view) {
                 attemptLogin();
             }
@@ -207,7 +206,8 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
             // TODO: 11/27/2017 create method to generate unique IDs for entries
             LoginItem entry = new LoginItem(displayName, email, password, 0);
             if (!loginDB.addEntry(entry)) {
-                Toast.makeText(this, "This display name is already taken", Toast.LENGTH_SHORT);
+                Toast.makeText(this, "This display name and/or email are already taken", Toast.LENGTH_SHORT).show();
+                return;
             } else {
                 // perform the user login attempt.
                 showProgress(true);
