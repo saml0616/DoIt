@@ -89,7 +89,8 @@
         android:layout_alignStart="@+id/startDate"
         android:layout_marginLeft="11dp"
         android:layout_marginStart="11dp"
-        android:text="$" />
+        android:text="$"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textView5"
@@ -98,5 +99,6 @@
         android:layout_alignTop="@+id/startDate"
         android:layout_toLeftOf="@+id/delete"
         android:layout_toStartOf="@+id/delete"
-        android:text="Due Date" />
+        android:text="Due Date:"
+        android:textStyle="bold" />
 </RelativeLayout>
