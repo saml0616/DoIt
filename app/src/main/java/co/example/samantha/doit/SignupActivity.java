@@ -214,6 +214,7 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
             // form field with an error.
             focusView.requestFocus();
         } else {
+            password = PasswordHash.hashPass(password);
             // TODO: 11/27/2017 create method to generate unique IDs for entries
             LoginItem entry = new LoginItem(displayName, password, email, 0);
             loginDB.addEntry(entry);
