@@ -204,15 +204,13 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
             // form field with an error.
             focusView.requestFocus();
         } else {
-            // Show a progress spinner, and kick off a background task to
-            // perform the user login attempt.
-            showProgress(true);
             // TODO: 11/27/2017 create method to generate unique IDs for entries
             LoginItem entry = new LoginItem(displayName, email, password, 0);
-            if (loginDB.addEntry(entry)) {
+            if (!loginDB.addEntry(entry)) {
                 Toast.makeText(this, "This display name is already taken", Toast.LENGTH_SHORT);
-                return;
             } else {
+                // perform the user login attempt.
+                showProgress(true);
                 try {
                     //simulates connection to a server
                     Thread.sleep(1000);
