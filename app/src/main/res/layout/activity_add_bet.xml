@@ -32,18 +32,17 @@
         android:id="@+id/Description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="284dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="168dp"
         android:text="@string/add_bet_description"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/betname" />
+        app:layout_constraintStart_toEndOf="@+id/Bet"
+        tools:layout_editor_absoluteY="16dp" />
 
     <EditText
         android:id="@+id/descripinput"
         android:layout_width="181dp"
         android:layout_height="78dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="196dp"
         android:layout_marginTop="12dp"
         android:ems="10"
         android:inputType="textPersonName"
@@ -55,11 +54,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:text="@string/add_bet_due_date"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descripinput" />
+        app:layout_constraintTop_toBottomOf="@+id/betname" />
 
     <Button
         android:id="@+id/cancel"
@@ -85,7 +83,7 @@
 
     <EditText
         android:id="@+id/dueDateInput"
-        android:layout_width="wrap_content"
+        android:layout_width="178dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
@@ -110,7 +108,7 @@
         android:layout_width="131dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
@@ -121,20 +119,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="196dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="@string/add_bet_location"
         app:layout_constraintStart_toEndOf="@+id/wager"
-        app:layout_constraintTop_toBottomOf="@+id/dueDateInput" />
+        app:layout_constraintTop_toBottomOf="@+id/descripinput" />
 
     <EditText
         android:id="@+id/locationInput"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toEndOf="@+id/wagerinput"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/location" />
 
 </android.support.constraint.ConstraintLayout>

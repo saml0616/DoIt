@@ -66,12 +66,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void setView() {
-        handler = new DatabaseHelper(this);
-        SQLiteDatabase db = handler.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT  * FROM Entry", null);
-        ListView listView = (ListView) findViewById(R.id.nav_first_layout);
-        adapter = new FeedCursorAdapter(this, cursor);
-        listView.setAdapter(adapter);
+        adapter.swapCursor(handler.getCursor());
     }
 
     @Override
