@@ -45,7 +45,7 @@ public class AddBet extends AppCompatActivity {
         EditText wager = (EditText) findViewById(R.id.wagerinput);
 
         //creates calender event
-        Intent calenderIntent = new Intent(Intent.ACTION_INSERT_OR_EDIT);
+        Intent calenderIntent = new Intent(Intent.ACTION_EDIT);
         calenderIntent.setType("vnd.android.cursor.item/event");
         calenderIntent.putExtra(CalendarContract.Events.TITLE, betName.getText().toString());
         calenderIntent.putExtra(CalendarContract.Events.DESCRIPTION, description.getText().toString());
