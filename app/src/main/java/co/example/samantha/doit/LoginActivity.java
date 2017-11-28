@@ -199,6 +199,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             focusView.requestFocus();
         }
         else {
+            password = PasswordHash.hashPass(password);
             String passwordChecker = loginDB.searchPassword(email);
             if (passwordChecker.equals(password)) {
                 showProgress(true);
