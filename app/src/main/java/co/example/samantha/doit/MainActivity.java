@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Context context = MainActivity.this;
         this.handler = new DatabaseHelper(context);
         this.adapter = new FeedCursorAdapter(context, handler.getCursor());
-//        handler.addEntry(new DataItem(1, 2, 3, "30 Jumps", "Tomorrow", "My Room",30));
+        handler.addEntry(new DataItem(1, 2, 3, "30 Jumps", "Tomorrow", "My Room",30));
 
         ListView listView = (ListView) findViewById(R.id.listview);
         listView.setAdapter(adapter);
