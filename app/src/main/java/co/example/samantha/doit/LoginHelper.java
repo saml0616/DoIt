@@ -38,8 +38,8 @@ public class LoginHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " ("
                 + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
-                + KEY_USERNAME + " TEXT UNIQUE, " + KEY_PASSWORD
-                + " TEXT, " + KEY_EMAIL + " TEXT UNIQUE, "+ KEY_TOTAL + " INTEGER)";
+                + KEY_USERNAME + " TEXT, " + KEY_PASSWORD
+                + " TEXT, " + KEY_EMAIL + " TEXT, "+ KEY_TOTAL + " INTEGER)";
         db.execSQL(CREATE_TABLE);
     }
 
@@ -59,6 +59,51 @@ public class LoginHelper extends SQLiteOpenHelper {
         if (database.insert(TABLE_NAME, null, values) == -1) {
             return false;
         }
+        return true;
+    }
+
+    public String searchPassword(String username) {
+        SQLiteDatabase database = getReadableDatabase();
+        String query = "SELECT " + KEY_EMAIL + ", " + KEY_PASSWORD + " FROM " + TABLE_NAME;
+        String user;
+        String pass = "err";
+        Cursor c = database.rawQuery(query, null);
+        c.moveToFirst();
+        do {
+            user = c.getString(0);
+            pass = c.getString(1);
+
+            if (user.equals(username)) {
+                pass = c.getString(1);
+                break;
+            }
+        } while (c.moveToNext());
+        return pass;
+    }
+
+    public boolean uniqueUsername(String username) {
+        SQLiteDatabase database = getReadableDatabase();
+        String query = "SELECT " + KEY_USERNAME + " FROM " + TABLE_NAME;
+        Cursor c = database.rawQuery(query, null);
+        c.moveToFirst();
+        do {
+            if (c.getString(0).equals(username)) {
+                return false;
+            }
+        } while (c.moveToNext());
+        return true;
+    }
+
+    public boolean uniqueEmail(String email) {
+        SQLiteDatabase database = getReadableDatabase();
+        String query = "SELECT " + KEY_EMAIL + " FROM " + TABLE_NAME;
+        Cursor c = database.rawQuery(query, null);
+        c.moveToFirst();
+        do {
+            if (c.getString(0).equals(email)) {
+                return false;
+            }
+        } while (c.moveToNext());
         return true;
     }
 

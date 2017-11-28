@@ -27,6 +27,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -198,13 +199,19 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             focusView.requestFocus();
         }
         else {
+            String passwordChecker = loginDB.searchPassword(email);
+            if (passwordChecker.equals(password)) {
+                showProgress(true);
+                Button signupButton =  (Button) findViewById(R.id.sign_up_button);
+                signupButton.setVisibility(View.GONE);
+                mAuthTask = new UserLoginTask(email, password);
+                mAuthTask.execute((Void) null);
+            } else {
+                Toast.makeText(this, "Username or password incorrect", Toast.LENGTH_SHORT).show();
+            }
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
-            showProgress(true);
-            Button signupButton =  (Button) findViewById(R.id.sign_up_button);
-            signupButton.setVisibility(View.GONE);
-            mAuthTask = new UserLoginTask(email, password);
-            mAuthTask.execute((Void) null);
+
         }
     }
 
