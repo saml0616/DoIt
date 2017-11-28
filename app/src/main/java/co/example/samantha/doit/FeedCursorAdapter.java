@@ -1,13 +1,18 @@
 package co.example.samantha.doit;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
+
+import java.util.List;
 
 /**
  * Created by Asus Rtrix on 11/27/2017.
@@ -30,7 +35,7 @@ public class FeedCursorAdapter extends CursorAdapter{
     }
 
     @Override
-    public void bindView(View view, Context context, Cursor cursor) {
+    public void bindView(View view, final Context context, Cursor cursor) {
         TextView description = view.findViewById(R.id.description);
         TextView startDate = view.findViewById(R.id.startDate);
         TextView endDate = view.findViewById(R.id.endDate);
@@ -56,6 +61,10 @@ public class FeedCursorAdapter extends CursorAdapter{
         delete.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                Intent launchIntent = context.getPackageManager().getLaunchIntentForPackage("com.venmo");
+                if (launchIntent != null) {
+                    context.startActivity(launchIntent);
+                }
                 db.deleteEntry(id);
                 if(mContext instanceof MainActivity){
                     ((MainActivity)mContext).setView();
