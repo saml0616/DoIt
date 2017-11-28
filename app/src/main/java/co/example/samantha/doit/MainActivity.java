@@ -19,7 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity {
 
     static final int ADD_WAGER = 1337;
     private FeedCursorAdapter adapter;
@@ -44,40 +44,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //                Intent inte = new Intent(MainActivity.this, AddBet.class);
 //                startActivity(inte);
 //            }
-//        } );a
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+//        } );
     }
 
     public void setView() {
         adapter.swapCursor(handler.getCursor());
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -103,26 +77,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-        FragmentManager fragmentManager = getFragmentManager();
-        if (id == R.id.nav_first_layout) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new FirstFragment()).commit();
-        } else if (id == R.id.nav_second_layout) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new SecondFragment()).commit();
-        } else if (id == R.id.nav_third_layout) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new ThirdFragment()).commit();
-        }  else if (id == R.id.nav_send) {
 
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent betinfo){
         if(requestCode == ADD_WAGER){
