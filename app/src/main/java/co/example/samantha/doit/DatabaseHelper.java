@@ -2,6 +2,7 @@ package co.example.samantha.doit;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -24,11 +25,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String KEY_END_DATE = "endDate";
     private static final String KEY_LOCATION = "location";
     private static final String KEY_WAGER = "wager";
+    private SQLiteDatabase db;
 
 
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        db = getWritableDatabase();
     }
 
     @Override
@@ -72,5 +75,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.delete(TABLE_NAME, KEY_BET_ID + " = ?",
                 new String[] { String.valueOf(id) });
         db.close();
+    }
+
+    public Cursor getCursor(){
+        return db.rawQuery("SELECT  * FROM Entry", null);
     }
 }
