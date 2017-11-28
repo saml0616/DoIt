@@ -3,6 +3,7 @@ package co.example.samantha.doit;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
@@ -100,10 +101,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         signUpButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent signupIntent = new Intent(LoginActivity.this, SignupActivity.class);
+                startActivity(signupIntent);
+                /*
                 mPasswordView.setText("*****");
                 mEmailView.setText("@");
                 attemptLogin();
                 Toast.makeText(getApplicationContext(), "I know this isnt the right way to do it... idk how... please help", Toast.LENGTH_LONG).show();
+                */
             }
         });
 
