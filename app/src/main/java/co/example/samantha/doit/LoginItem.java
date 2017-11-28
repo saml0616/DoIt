@@ -9,14 +9,12 @@ public class LoginItem {
     private String username;
     private String password;
     private String email;
-    private int ID;
     private int totalBets;
 
-    public LoginItem(String username, String password, String email, int ID, int totalBets) {
+    public LoginItem(String username, String password, String email, int totalBets) {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.ID = ID;
         this.totalBets = totalBets;
     }
 
@@ -42,14 +40,6 @@ public class LoginItem {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
     }
 
     public int getTotalBets() {

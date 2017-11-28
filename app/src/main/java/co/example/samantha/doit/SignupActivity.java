@@ -28,6 +28,9 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +41,9 @@ import static android.Manifest.permission.READ_CONTACTS;
  * A login screen that offers login via email/password.
  */
 public class SignupActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+
+    //creates login database
+    private LoginHelper loginDB = new LoginHelper(this);
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -61,6 +67,7 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private AutoCompleteTextView mDisplayNameView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +75,9 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
         setContentView(R.layout.activity_signup);
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
+        populateAutoComplete();
+
+        mDisplayNameView =  (AutoCompleteTextView) findViewById(R.id.displayName);
         populateAutoComplete();
 
         mPasswordView = (EditText) findViewById(R.id.password);
@@ -151,16 +161,22 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
         // Reset errors.
         mEmailView.setError(null);
         mPasswordView.setError(null);
+        mDisplayNameView.setError(null);
 
         // Store values at the time of the login attempt.
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
+        String displayName = mDisplayNameView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
-        if (!isPasswordValid(password)) {
+        if (TextUtils.isEmpty(password)) {
+            mPasswordView.setError(getString(R.string.error_field_required));
+            focusView = mPasswordView;
+            cancel = true;
+        } else if (!isPasswordValid(password)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
             cancel = true;
@@ -177,6 +193,12 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
             cancel = true;
         }
 
+        if (TextUtils.isEmpty(displayName)) {
+            mDisplayNameView.setError(getString(R.string.error_field_required));
+            focusView = mDisplayNameView;
+            cancel = true;
+        }
+
         if (cancel) {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
@@ -185,8 +207,20 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
-            mAuthTask.execute((Void) null);
+            // TODO: 11/27/2017 create method to generate unique IDs for entries
+            LoginItem entry = new LoginItem(displayName, email, password, 0);
+            if (loginDB.addEntry(entry)) {
+                Toast.makeText(this, "This display name is already taken", Toast.LENGTH_SHORT);
+                return;
+            } else {
+                try {
+                    //simulates connection to a server
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                finish();
+            }
         }
     }
 
@@ -298,10 +332,12 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
 
         private final String mEmail;
         private final String mPassword;
+        private final String mDisplayName;
 
-        UserLoginTask(String email, String password) {
+        UserLoginTask(String email, String password, String displayName) {
             mEmail = email;
             mPassword = password;
+            mDisplayName = displayName;
         }
 
         @Override

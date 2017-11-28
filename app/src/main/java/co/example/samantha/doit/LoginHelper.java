@@ -15,7 +15,6 @@ public class LoginHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "LoginDB";
     private static final String TABLE_NAME = "Entry";
-    private static final String KEY_LOGIN_ID = "_id";
     private static final String KEY_USERNAME = "username";
     private static final String KEY_PASSWORD = "password";
     private static final String KEY_EMAIL = "email";
@@ -28,8 +27,8 @@ public class LoginHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + " ("
-                + KEY_LOGIN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_USERNAME + " TEXT, "
-                + KEY_PASSWORD + " TEXT, " + KEY_EMAIL + " TEXT, "+ KEY_TOTAL + " INTEGER)";
+                + KEY_USERNAME + " TEXT PRIMARY KEY, " + KEY_PASSWORD
+                + " TEXT, " + KEY_EMAIL + " TEXT, "+ KEY_TOTAL + " INTEGER)";
         db.execSQL(CREATE_TABLE);
     }
 
@@ -39,15 +38,17 @@ public class LoginHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void addEntry(LoginItem entry) {
+    public boolean addEntry(LoginItem entry) {
         ContentValues values = new ContentValues();
-        values.put(KEY_LOGIN_ID, entry.getID());
         values.put(KEY_USERNAME, entry.getUsername());
         values.put(KEY_PASSWORD, entry.getPassword());
         values.put(KEY_EMAIL, entry.getEmail());
         values.put(KEY_TOTAL, entry.getTotalBets());
         SQLiteDatabase database = getWritableDatabase();
-        database.insert(TABLE_NAME, null, values);
+        if (database.insert(TABLE_NAME, null, values) == -1) {
+            return false;
+        }
+        return true;
     }
 
     public void deleteEntry(String username) {
