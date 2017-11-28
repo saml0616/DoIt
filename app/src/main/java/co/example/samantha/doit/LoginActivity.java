@@ -207,7 +207,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 mAuthTask = new UserLoginTask(email, password);
                 mAuthTask.execute((Void) null);
             } else {
-                Toast.makeText(this, "Username or password incorrect", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Email or password incorrect", Toast.LENGTH_SHORT).show();
             }
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
