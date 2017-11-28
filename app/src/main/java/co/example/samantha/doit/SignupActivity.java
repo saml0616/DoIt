@@ -198,27 +198,34 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
             cancel = true;
         }
 
+        if (!loginDB.uniqueUsername(displayName)) {
+            mDisplayNameView.setError(getString(R.string.display_taken));
+            focusView = mDisplayNameView;
+            cancel = true;
+        }
+        if (!loginDB.uniqueEmail(email)) {
+            mEmailView.setError(getString(R.string.email_taken));
+            focusView = mEmailView;
+            cancel = true;
+        }
+
         if (cancel) {
             // There was an error; don't attempt login and focus the first
             // form field with an error.
             focusView.requestFocus();
         } else {
             // TODO: 11/27/2017 create method to generate unique IDs for entries
-            LoginItem entry = new LoginItem(displayName, email, password, 0);
-            if (!loginDB.addEntry(entry)) {
-                Toast.makeText(this, "This display name and/or email are already taken", Toast.LENGTH_SHORT).show();
-                return;
-            } else {
-                // perform the user login attempt.
-                showProgress(true);
-                try {
-                    //simulates connection to a server
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                finish();
+            LoginItem entry = new LoginItem(displayName, password, email, 0);
+            loginDB.addEntry(entry);
+            // perform the user login attempt.
+            showProgress(true);
+            try {
+                //simulates connection to a server
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
+            finish();
         }
     }
 

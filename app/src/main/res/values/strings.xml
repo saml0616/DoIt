@@ -19,6 +19,8 @@
     <string name="sign_up">Sign Up</string>
     <string name="signUp">Sign Up</string>
     <string name="title_activity_feed">FeedActivity</string>
+    <string name="email_taken">This email has been already taken</string>
+    <string name="display_taken">This display name has been already taken</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
