@@ -205,6 +205,7 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
             focusView.requestFocus();
         } else {
             // Show a progress spinner, and kick off a background task to
+<<<<<<< HEAD
             // TODO: 11/27/2017 create method to generate unique IDs for entries
             LoginItem entry = new LoginItem(displayName, email, password, 0);
             if (!loginDB.addEntry(entry)) {
@@ -213,6 +214,16 @@ public class SignupActivity extends AppCompatActivity implements LoaderCallbacks
             } else {
                 // perform the user login attempt.
                 showProgress(true);
+=======
+            // perform the user login attempt.
+            showProgress(true);
+            // TODO: 11/27/2017 create method to generate unique IDs for entries
+            LoginItem entry = new LoginItem(displayName, email, password, 0);
+            if (loginDB.addEntry(entry)) {
+                Toast.makeText(this, "This display name is already taken", Toast.LENGTH_SHORT);
+                return;
+            } else {
+>>>>>>> master
                 try {
                     //simulates connection to a server
                     Thread.sleep(1000);
