@@ -103,12 +103,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             public void onClick(View v) {
                 Intent signupIntent = new Intent(LoginActivity.this, SignupActivity.class);
                 startActivity(signupIntent);
-                /*
-                mPasswordView.setText("*****");
-                mEmailView.setText("@");
-                attemptLogin();
-                Toast.makeText(getApplicationContext(), "I know this isnt the right way to do it... idk how... please help", Toast.LENGTH_LONG).show();
-                */
             }
         });
 
@@ -210,6 +204,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
+            Button signupButton =  (Button) findViewById(R.id.sign_up_button);
+            signupButton.setVisibility(View.GONE);
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
         }
