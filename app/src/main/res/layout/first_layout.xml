@@ -1,41 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    tools:context="co.example.samantha.doit.MainActivity">
 
-
-    <TextView
-        android:id="@+id/description"
-        android:layout_width="56dp"
-        android:layout_height="40dp"
-        android:layout_weight="0.15" />
-
-    <TextView
-        android:id="@+id/startDate"
-        android:layout_width="49dp"
-        android:layout_height="40dp" />
-
-    <TextView
-        android:id="@+id/endDate"
-        android:layout_width="56dp"
-        android:layout_height="40dp" />
-
-    <TextView
-        android:id="@+id/wagerinput"
-        android:layout_width="52dp"
-        android:layout_height="40dp" />
-
-    <TextView
-        android:id="@+id/betMateID"
-        android:layout_width="54dp"
-        android:layout_height="40dp" />
-
-    <Button
-        android:id="@+id/delete"
-        android:layout_width="69dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="12dp"
-        android:layout_weight="0.72"
-        android:text="Complete" />
-</LinearLayout>
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>
