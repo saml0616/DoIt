@@ -46,7 +46,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase datab, int oldVersion, int newVersion) {
         // Drop older table if existed
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        datab.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
 
         // Create tables again
         onCreate(datab);
@@ -54,7 +54,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public void addEntry(DataItem entry) {
         ContentValues values = new ContentValues();
-        values.put(KEY_BET_ID, entry.getBetID());
         values.put(KEY_OWNER_ID, entry.getOwnerID());
         values.put(KEY_BETMATE_ID, entry.getBetMateID());
         values.put(KEY_DESCRIPTION, entry.getDescription());
