@@ -15,8 +15,7 @@ public class PasswordHash {
             int half = (x >>> 4) & 0x0F;
             int whole = 0;
             do {
-                builder.append((0 <= half) && (half <= 9) ? (char) ('0' + half)
-                : (char) ('a' + (half - 10)));
+                builder.append((0 <= half) && (half <= 9) ? (char) ('0' + half) : (char) ('a' + (half - 10)));
                 half = x & 0x0F;
                 whole++;
             } while (whole < 1);
